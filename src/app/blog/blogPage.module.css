@@ -1,0 +1,14 @@
+.title{
+  background-color: #75757550;
+  color: var(textColor);
+  padding: 5px 10px;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: 7px;
+}
+
+.content{
+  display: flex;
+  gap: 50px;
+}
+

@@ -1,0 +1,37 @@
+.categoryList {
+  margin-top: 35px;
+  margin-bottom: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.categoryItem {
+  padding: 10px 25px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.categoryItem.web {
+  background-color: #75757550;
+}
+
+.categoryItem.coding {
+  background-color: #75757550;
+}
+
+.categoryItem.knowledge {
+  background-color: #75757550;
+}
+
+.categoryItem.music {
+  background-color: #75757550;
+}
+
+.categoryItem.hobbie {
+  background-color: #75757550;
+}
+
+.categoryItem.multipurpose {
+  background-color: #75757550;
+}
