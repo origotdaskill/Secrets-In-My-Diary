@@ -23,11 +23,14 @@
   display: flex;
   align-items: center;
   gap: 50px;
+  
 }
 
 .image {
+  display: flex;
   object-fit: cover;
-  place-items: center;
+  align-items: safe;
+margin-left: 50px;
 }
 
 .textContainer {
@@ -77,5 +80,14 @@
 @media screen and (max-width: 640px) {
   .title {
     display: none;
+  }
+  .image {
+    height: 250px;
+    width: 250px;
+  }
+  .imgContainer {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
   }
 }
