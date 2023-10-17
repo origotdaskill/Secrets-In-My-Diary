@@ -24,7 +24,7 @@ const Comments = ({ postSlug }) => {
   const { status } = useSession();
 
   const { data, mutate, isLoading } = useSWR(
-    `https://127.0.0.1:3000/api/comments?postSlug=${postSlug}`,
+    `https://secrets-in-my-diary-6b4v.vercel.app/api/comments?postSlug=${postSlug}`,
     fetcher
   );
 

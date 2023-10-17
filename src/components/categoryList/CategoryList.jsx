@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const getData = async () => {
-  const res = await fetch("https://127.0.0.1:3000/api/categories", {
+  const res = await fetch("https://secrets-in-my-diary-6b4v.vercel.app/api/categories", {
     cache: "no-store",
   });
 
