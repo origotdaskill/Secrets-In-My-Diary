@@ -85,7 +85,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "style", //If not selected, choose the general category
+        catSlug: catSlug || "web", //If not selected, choose the general category
       }),
     });
 
@@ -111,8 +111,7 @@ const WritePage = () => {
         <option value="hobbie">Hobbie</option>
         <option value="coding">Coding</option>
       </select>
-      <div className={styles.editor}>
-        <button className={styles.button} onClick={() => setOpen(!open)}>
+      <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
         </button>
         {open && (
@@ -136,6 +135,7 @@ const WritePage = () => {
             </button>
           </div>
         )}
+      <div className={styles.editor}>
         <ReactQuill
           className={styles.textArea}
           theme="bubble"
