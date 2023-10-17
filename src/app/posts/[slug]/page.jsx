@@ -4,7 +4,7 @@ import Image from "next/image";
 import Comments from "@/components/comments/Comments";
 
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await fetch(`https://secrets-in-my-diary-6b4v-imnqv873w-walids-projects-fc600ccd.vercel.app/api/posts/${slug}`, {
     cache: "no-store",
   });
 
