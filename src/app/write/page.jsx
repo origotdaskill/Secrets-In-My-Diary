@@ -1,6 +1,5 @@
 "use client";
 
-import React from 'react';
 import Image from "next/image";
 import styles from "./writePage.module.css";
 import { useEffect, useState } from "react";
@@ -16,12 +15,9 @@ import {
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic";
 
-const Quill = dynamic(() => import('react-quill'),{ssr: false});
-
+const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
 
 const WritePage = () => {
-
-
   const { status } = useSession();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -32,12 +28,12 @@ const WritePage = () => {
   const [catSlug, setCatSlug] = useState("");
 
   useEffect(() => {
-
     const storage = getStorage(app);
     const upload = () => {
-    const name = new Date().getTime() + file.name;
-    const storageRef = ref(storage, name);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+      const name = new Date().getTime() + file.name;
+      const storageRef = ref(storage, name);
+
+      const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
         "state_changed",
@@ -83,7 +79,6 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
-    
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -91,7 +86,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "Web", //If not selected, choose the general category
+        catSlug: catSlug || "style", //If not selected, choose the general category
       }),
     });
 
@@ -101,8 +96,7 @@ const WritePage = () => {
     }
   };
 
-  
-
+ 
 
   return (
     <div className={styles.container}>
@@ -120,7 +114,6 @@ const WritePage = () => {
         <option value="hobbie">Hobbie</option>
         <option value="coding">Coding</option>
       </select>
-      
         <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
         </button>
@@ -145,16 +138,15 @@ const WritePage = () => {
             </button>
           </div>
         )}
+        <div className={styles.editor}>
 
-<div className={styles.editor}>
-     
-      <Quill
-      className={styles.textArea}
+        <ReactQuill
+          className={styles.textArea}
           theme="snow"
           value={value}
           onChange={setValue}
-          placeholder="Tell your story..."/>
-        
+          placeholder="Tell your story..."
+        />
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
