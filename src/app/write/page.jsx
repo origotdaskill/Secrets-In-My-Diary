@@ -15,7 +15,6 @@ import {
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic";
 
-const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
 
 const WritePage = () => {
   const { status } = useSession();
@@ -30,15 +29,11 @@ const WritePage = () => {
 
   useEffect(() => {
 
-    
-
-
     const storage = getStorage(app);
     const upload = () => {
-      const name = new Date().getTime() + file.name;
-      const storageRef = ref(storage, name);
-
-      const uploadTask = uploadBytesResumable(storageRef, file);
+    const name = new Date().getTime() + file.name;
+    const storageRef = ref(storage, name);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
         "state_changed",
@@ -84,6 +79,7 @@ const WritePage = () => {
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
+    
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -91,7 +87,7 @@ const WritePage = () => {
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "style", //If not selected, choose the general category
+        catSlug: catSlug || "Web", //If not selected, choose the general category
       }),
     });
 
@@ -101,7 +97,8 @@ const WritePage = () => {
     }
   };
 
- 
+  const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
+
 
   return (
     <div className={styles.container}>
