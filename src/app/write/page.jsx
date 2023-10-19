@@ -16,30 +16,28 @@ import {
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic";
 
-
-
-const WritePage = () => {
-  
 const Quill = dynamic(() => import('react-quill'),{ssr: false});
 
 
-const { status } = useSession();
-const router = useRouter();
-const [open, setOpen] = useState(false);
-const [file, setFile] = useState(null);
-const [media, setMedia] = useState("");
-const [value, setValue] = useState("");
-const [title, setTitle] = useState("");
-const [catSlug, setCatSlug] = useState("");
+const WritePage = () => {
 
+
+  const { status } = useSession();
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [file, setFile] = useState(null);
+  const [media, setMedia] = useState("");
+  const [value, setValue] = useState("");
+  const [title, setTitle] = useState("");
+  const [catSlug, setCatSlug] = useState("");
 
   useEffect(() => {
+
     const storage = getStorage(app);
     const upload = () => {
-      const name = new Date().getTime() + file.name;
-      const storageRef = ref(storage, name);
-
-      const uploadTask = uploadBytesResumable(storageRef, file);
+    const name = new Date().getTime() + file.name;
+    const storageRef = ref(storage, name);
+    const uploadTask = uploadBytesResumable(storageRef, file);
 
       uploadTask.on(
         "state_changed",
@@ -85,6 +83,7 @@ const [catSlug, setCatSlug] = useState("");
       .replace(/^-+|-+$/g, "");
 
   const handleSubmit = async () => {
+    
     const res = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -92,9 +91,7 @@ const [catSlug, setCatSlug] = useState("");
         desc: value,
         img: media,
         slug: slugify(title),
-        catSlug: catSlug || "web", 
-  
-        //If not selected, choose the general category
+        catSlug: catSlug || "Web", //If not selected, choose the general category
       }),
     });
 
@@ -104,8 +101,7 @@ const [catSlug, setCatSlug] = useState("");
     }
   };
 
-
-
+  
 
 
   return (
@@ -117,13 +113,15 @@ const [catSlug, setCatSlug] = useState("");
         onChange={(e) => setTitle(e.target.value)}
       />
       <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-        <option value="web">web</option>
-        <option value="coding">coding</option>
-        <option value="music">music</option>
-        <option value="Knowledge">knowledge</option>
-        <option value="hobbie">hobbie</option>
-        <option value="multipurpose">multipurpose</option>
-      </select> <button className={styles.button} onClick={() => setOpen(!open)}>
+        <option value="web">Web</option>
+        <option value="knowledge">Knowledge</option>
+        <option value="music">Music</option>
+        <option value="multipurpose">Multipurpose</option>
+        <option value="hobbie">Hobbie</option>
+        <option value="coding">Coding</option>
+      </select>
+      
+        <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
         </button>
         {open && (
@@ -147,20 +145,17 @@ const [catSlug, setCatSlug] = useState("");
             </button>
           </div>
         )}
-      
-      <div className={styles.editor}>
-        
+
+<div className={styles.editor}>
+     
       <Quill
       className={styles.textArea}
           theme="snow"
           value={value}
           onChange={setValue}
           placeholder="Tell your story..."/>
+        
       </div>
-
-      
-
-
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
       </button>
@@ -169,11 +164,3 @@ const [catSlug, setCatSlug] = useState("");
 };
 
 export default WritePage;
-
-
-
-
-
-
-
-
