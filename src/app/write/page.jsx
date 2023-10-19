@@ -18,15 +18,7 @@ import dynamic from "next/dynamic";
 
 
 const WritePage = () => {
-  const DynamicReactQuill = React.lazy(() => import('react-quill'),{ssr: false});
   const Quill = dynamic(() => import('react-quill'),{ssr: false});
-
-
-  const [editorContent, setEditorContent] = useState('');
-
-  const handleEditorChange = (value) => {
-    setEditorContent(value);
-  };
 
   const { status } = useSession();
   const router = useRouter();
@@ -153,14 +145,8 @@ const WritePage = () => {
           </div>
         )}
 
-        <Suspense fallback={<div>Loading...</div>}>
         
-      <DynamicReactQuill
-          value={editorContent}
-          onChange={handleEditorChange}
-          placeholder="Write something..."
-        />
-
+     
       <Quill
       className={styles.textArea}
           theme="snow"
