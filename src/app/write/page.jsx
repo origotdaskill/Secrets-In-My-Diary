@@ -4,7 +4,7 @@ import React from 'react';
 import Image from "next/image";
 import styles from "./writePage.module.css";
 import { useEffect, useState, Suspense } from "react";
-import "react-quill/dist/quill.bubble.css";
+import "react-quill/dist/quill.snow.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import {
@@ -163,7 +163,7 @@ const WritePage = () => {
 
       <Quill
       className={styles.textArea}
-          theme="bubble"
+          theme="snow"
           value={value}
           onChange={setValue}
           placeholder="Tell your story..."/>
