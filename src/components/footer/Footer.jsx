@@ -13,9 +13,12 @@ const Footer = () => {
         <p className={styles.desc}>
         Welcome to this blog is personal blog that offers readers a glimpse into the intimate thoughts, experiences, and emotions of the author&apos;s life. Through beautifully crafted and heartfelt prose, the blog delves into a myriad of topics, including Web, Music, Coding , and some knoledge .</p>
         <div className={styles.icons}>
-          <Image src="/facebook.png" alt="" width={18} height={18} />
-          <Image src="/twitter.png" alt="" width={18} height={18} />
-          <Image src="/linkedin.png" alt="" width={18} height={18} />
+        <a href="https://twitter.com/walidhorri9755" target="_blank" rel="noopener noreferrer">
+        <Image src="/x.png" alt="twitter" width={24} height={24} /></a>
+        <a href="https://www.linkedin.com/in/walid-horri-9ty/" target="_blank" rel="noopener noreferrer">
+        <Image src="/linkedin.png" alt="linkedin" width={24} height={24} /></a>
+        <a href="https://github.com/origotdaskill" target="_blank" rel="noopener noreferrer">
+        <Image src="/github.png" alt="linkedin" width={24} height={24} /></a>
         </div>
       </div>
       <div className={styles.links}>
@@ -23,7 +26,6 @@ const Footer = () => {
           <span className={styles.listTitle}>Links</span>
           <Link href="/">Homepage</Link>
           <Link href="/blog">Blog</Link>
-          <Link href="/">Contact</Link>
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Tags</span>
@@ -34,9 +36,9 @@ const Footer = () => {
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>
-          <Link href="/">Facebook</Link>
-          <Link href="/">Twitter</Link>
-          <Link href="/">LinkedIn</Link>
+          <Link href="https://github.com/origotdaskill">GitHub</Link>
+          <Link href="https://twitter.com/walidhorri9755">Twitter</Link>
+          <Link href="https://www.linkedin.com/in/walid-horri-9ty/">LinkedIn</Link>
         </div>
       </div>
     </div>
