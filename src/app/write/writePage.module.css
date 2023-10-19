@@ -9,6 +9,7 @@
   padding: 10px 20px;
   margin-left: 50px;
   background-color: var(--softBg);
+  color: var(--textColor);
   width: max-content;
 }
 
