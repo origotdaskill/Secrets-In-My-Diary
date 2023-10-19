@@ -14,20 +14,26 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic";
+import React, { useState } from "react";
+
+const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
 
 const WritePage = () => {
   const { status } = useSession();
-  const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
   const router = useRouter();
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
-  const [value, setState] = useState("");
+  const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
 
   useEffect(() => {
+
+    
+
+
     const storage = getStorage(app);
     const upload = () => {
       const name = new Date().getTime() + file.name;
@@ -96,6 +102,8 @@ const WritePage = () => {
     }
   };
 
+ 
+
   return (
     <div className={styles.container}>
       <input
@@ -141,7 +149,7 @@ const WritePage = () => {
           className={styles.textArea}
           theme="bubble"
           value={value}
-          onChange={setState}
+          onChange={setValue}
           placeholder="Tell your story..."
         />
       </div>
