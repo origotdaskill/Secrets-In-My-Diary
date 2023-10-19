@@ -23,7 +23,7 @@ const WritePage = () => {
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
   const [media, setMedia] = useState("");
-  const [value, setValue] = useState("");
+  const [value, setState] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
 
@@ -141,7 +141,7 @@ const WritePage = () => {
           className={styles.textArea}
           theme="bubble"
           value={value}
-          onChange={value}
+          onChange={setState}
           placeholder="Tell your story..."
         />
       </div>
