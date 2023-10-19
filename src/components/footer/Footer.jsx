@@ -36,7 +36,6 @@ const Footer = () => {
         </div>
         <div className={styles.list}>
           <span className={styles.listTitle}>Social</span>
-          <Link href="https://github.com/origotdaskill">GitHub</Link>
           <Link href="https://twitter.com/walidhorri9755">Twitter</Link>
           <Link href="https://www.linkedin.com/in/walid-horri-9ty/">LinkedIn</Link>
         </div>
