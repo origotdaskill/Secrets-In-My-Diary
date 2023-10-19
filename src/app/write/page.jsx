@@ -17,7 +17,7 @@ import dynamic from "next/dynamic";
 
 
 const WritePage = () => {
-  const DynamicReactQuill = React.lazy(() => import('react-quill'));
+  const DynamicReactQuill = React.lazy(() => import('react-quill'),{ssr: false});
   const Quill = dynamic(() => import('react-quill'),{ssr: false});
 
 
