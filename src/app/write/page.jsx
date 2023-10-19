@@ -141,7 +141,6 @@ const WritePage = () => {
           className={styles.textArea}
           theme="bubble"
           value={value}
-          onChange={setState}
           placeholder="Tell your story..."
         />
       </div>
