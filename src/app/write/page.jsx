@@ -167,7 +167,6 @@ const WritePage = () => {
           value={value}
           onChange={setValue}
           placeholder="Tell your story..."/>
-      </Suspense>
         
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
