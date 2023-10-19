@@ -14,7 +14,6 @@ import {
 } from "firebase/storage";
 import { app } from "@/utils/firebase";
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
 
 const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
 
