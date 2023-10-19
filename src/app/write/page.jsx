@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./writePage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
@@ -17,8 +17,15 @@ import dynamic from "next/dynamic";
 
 
 const WritePage = () => {
-  const ReactQuill = React.lazy(() => import('react-quill'),{ssr: false});
-  
+  const DynamicReactQuill = React.lazy(() => import('react-quill'));
+  const Quill = dynamic(() => import('react-quill'),{ssr: false});
+
+
+  const [editorContent, setEditorContent] = useState('');
+
+  const handleEditorChange = (value) => {
+    setEditorContent(value);
+  };
 
   const { status } = useSession();
   const router = useRouter();
@@ -144,13 +151,23 @@ const WritePage = () => {
             </button>
           </div>
         )}
-        <ReactQuill
-          className={styles.textArea}
+
+        <Suspense fallback={<div>Loading...</div>}>
+        
+      <DynamicReactQuill
+          value={editorContent}
+          onChange={handleEditorChange}
+          placeholder="Write something..."
+        />
+
+      <Quill
+      className={styles.textArea}
           theme="bubble"
           value={value}
           onChange={setValue}
-          placeholder="Tell your story..."
-        />
+          placeholder="Tell your story..."/>
+      </Suspense>
+        
       </div>
       <button className={styles.publish} onClick={handleSubmit}>
         Publish
