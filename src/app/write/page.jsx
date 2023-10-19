@@ -17,6 +17,9 @@ import dynamic from "next/dynamic";
 
 
 const WritePage = () => {
+  const ReactQuill = React.lazy(() => import('react-quill'),{ssr: false});
+  
+
   const { status } = useSession();
   const router = useRouter();
 
@@ -97,7 +100,7 @@ const WritePage = () => {
     }
   };
 
-  const ReactQuill = dynamic(() => import('react-quill'),{ssr: false});
+  
 
 
   return (
