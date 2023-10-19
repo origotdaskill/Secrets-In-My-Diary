@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import Image from "next/image";
 import styles from "./writePage.module.css";
 import { useEffect, useState, Suspense } from "react";
