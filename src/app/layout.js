@@ -9,8 +9,8 @@ import AuthProvider from "@/providers/AuthProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: 'Secret in My Diary blog',
-  description: 'Behind every close pages : secrets in my diary',
+  title: 'Secrets in My Diary blog',
+  description: 'Behind every closed pages secrets in my diary',
 };
 
 export default function RootLayout({ children }) {
