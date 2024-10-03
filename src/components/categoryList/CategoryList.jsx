@@ -9,36 +9,51 @@ const getData = async () => {
   });
 
   if (!res.ok) {
-    throw new Error("Failed");
+    const errorMessage = await res.text(); // Capture the error response body
+    console.error("Error fetching categories:", errorMessage); // Log the error
+    throw new Error("Failed to fetch categories");
   }
 
-  return res.json();
+  const data = await res.json();
+  return data; // Ensure this is an array
 };
 
 const CategoryList = async () => {
-  const data = await getData();
+  let data = [];
+  try {
+    data = await getData();
+    // Check if data is an array and log its structure
+    console.log("Fetched categories data:", data);
+  } catch (error) {
+    console.error(error.message); // Log any errors during data fetch
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Popular Categories</h1>
       <div className={styles.categories}>
-        {data?.map((item) => (
-          <Link
-            href="/blog?cat=knowledge"
-            className={`${styles.category} ${styles[item.slug]}`}
-            key={item._id}
-          >
-            {item.img && (
-              <Image
-                src={item.img}
-                alt=""
-                width={32}
-                height={32}
-                className={styles.image}
-              />
-            )}
-            {item.title}
-          </Link>
-        ))}
+        {Array.isArray(data) && data.length > 0 ? (
+          data.map((item) => (
+            <Link
+              href={`/blog?cat=${item.slug}`} // Update to use item.slug for category
+              className={`${styles.category} ${styles[item.slug]}`}
+              key={item._id} // Assuming item has a unique ID
+            >
+              {item.img && (
+                <Image
+                  src={item.img}
+                  alt={item.title || "Category Image"} // Use a meaningful alt text
+                  width={32}
+                  height={32}
+                  className={styles.image}
+                />
+              )}
+              {item.title} {/* Assuming item has a title */}
+            </Link>
+          ))
+        ) : (
+          <p>No categories available.</p> // Fallback UI if no data
+        )}
       </div>
     </div>
   );
