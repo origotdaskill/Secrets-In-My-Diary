@@ -3,12 +3,11 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE,
-  authDomain: "secrets-in-my-diary-5041f.firebaseapp.com",
-  projectId: "secrets-in-my-diary-5041f",
-  storageBucket: "secrets-in-my-diary-5041f.appspot.com",
-  messagingSenderId: "1010787782828",
-  appId: "1:1010787782828:web:97c841ba8e643dadc9cf09",
-  measurementId: "G-5Q63G7DVRB"
+  authDomain: "secrets-in-my-diary-cecac.firebaseapp.com",
+  projectId: "secrets-in-my-diary-cecac",
+  storageBucket: "secrets-in-my-diary-cecac.appspot.com",
+  messagingSenderId: "353685590286",
+  appId: "1:353685590286:web:b13b8f948530484b40875f"
 };
 
 // Initialize Firebase
